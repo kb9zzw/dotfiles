@@ -13,6 +13,7 @@ then
   fresh-options --file=~/.bash_profile --marker
     # Base profile settings
     fresh shell/bash/profile.sh
+    fresh shell/bash/fresh.sh
 
     # Aliases
     fresh shell/bash/aliases/general.sh
