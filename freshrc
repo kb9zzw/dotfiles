@@ -12,7 +12,7 @@ if which bash &> /dev/null
 then
   fresh-options --file=~/.bash_profile --marker
     # Base profile settings
-    fresh shell/bash/bash_profile
+    fresh shell/bash/profile.sh
 
     # Aliases
     fresh shell/bash/aliases/general.sh
