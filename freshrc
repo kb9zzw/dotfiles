@@ -8,8 +8,14 @@ fresh gitconfig --file
 # bash
 if which bash &> /dev/null
 then
-  fresh-options --file=~/.bash_profile --marker
-    fresh shell/aliases/general.sh
+  fresh-options --file=~/.profile --marker
+    # Profile settings
+    fresh shell/bash/base.sh
+    fresh shell/bash/prompt.sh
+
+    # Aliases
+    fresh shell/bash/aliases/general.sh
+    fresh shell/bash/aliases/ls.sh
   fresh-options
-  fresh shell/bash/bashrc --file
+  fresh shell/bash/config/bashrc --file
 fi
