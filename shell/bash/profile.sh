@@ -35,11 +35,10 @@ MY_LTPURPLE="\[\033[1;35m\]"
 MY_LTCYAN="\[\033[1;36m\]"
 MY_WHITE="\[\033[1;37m\]"
 
-NAME=$(id -un)
-if [[ $NAME == 'root' ]]
+if [[ $(id -un) == 'root' ]]
 then
     USERSTRING="${MY_LTRED}\u"
-elif [[ $NAME == 'jburroug' || $NAME == 'jon.burroughs' ]]
+elif [[ $(id -un) == 'jburroug' || $(id -un) == 'jon.burroughs' ]]
 then
     USERSTRING="${MY_GREEN}"
 else
