@@ -18,6 +18,11 @@ then
     # Aliases
     fresh shell/bash/aliases/general.sh
     fresh shell/bash/aliases/ls.sh
+
+    # OS-specific stuff
+    if [[ "$(uname)" == "Darwin" ]]; then
+      fresh shell/bash/mac.sh
+    fi
   fresh-options
   fresh shell/bash/bashrc --file
 fi
