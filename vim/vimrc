@@ -1,0 +1,18 @@
+set nocompatible
+set modelines=2
+set nu
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+syntax on
+filetype plugin indent on
+colorscheme slate
+set shell=/bin/bash
+
+nmap <F11> :set invpaste<CR>
+nmap <F12> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
+
+
+
