@@ -1,6 +1,11 @@
 [user]
   name = kb9zzw
+  email = kb9zzw@gmail.com
 [github]
   name = kb9zzw
   email = kb9zzw@gmail.com
 
+[core]
+  editor = vim
+[merge]
+  tool = vimdiff
