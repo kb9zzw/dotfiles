@@ -11,8 +11,9 @@ filetype plugin indent on
 colorscheme slate
 set shell=/bin/bash
 
-nmap <F11> :set invpaste<CR>
-nmap <F12> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
+nmap <F9> :set invpaste<CR>
+nmap <F10> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
 
-
-
+" Window split navigation
+nmap <TAB> <C-w>
+nmap <TAB><TAB> <C-w>w
