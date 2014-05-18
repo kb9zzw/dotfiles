@@ -23,6 +23,7 @@ then
     # Aliases
     fresh shell/bash/aliases/general.sh
     fresh shell/bash/aliases/ls.sh
+    fresh shell/bash/aliases/notes.sh
   fresh-options
   fresh shell/bash/bashrc --file
 fi
