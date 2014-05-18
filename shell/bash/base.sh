@@ -64,3 +64,10 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWCOLORHINTS=1
+
+# foot gun prevention
+alias rm='rm -i'
+alias mv='mv -i'
+
+# color diff
+which colordiff &>/dev/null && alias diff=colordiff
