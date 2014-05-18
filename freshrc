@@ -11,6 +11,11 @@ fresh gitconfig --file
 if which bash &> /dev/null
 then
   fresh-options --file=~/.bash_profile --marker
+    # OS-specific stuff
+    if [[ "$(uname)" == "Darwin" ]]; then
+      fresh shell/bash/mac.sh
+    fi
+
     # Base profile settings
     fresh shell/bash/profile.sh
     fresh shell/bash/fresh.sh
@@ -18,11 +23,6 @@ then
     # Aliases
     fresh shell/bash/aliases/general.sh
     fresh shell/bash/aliases/ls.sh
-
-    # OS-specific stuff
-    if [[ "$(uname)" == "Darwin" ]]; then
-      fresh shell/bash/mac.sh
-    fi
   fresh-options
   fresh shell/bash/bashrc --file
 fi
