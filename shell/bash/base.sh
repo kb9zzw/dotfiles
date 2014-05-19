@@ -57,6 +57,9 @@ else
     MYGITPROMPT=''
 fi
 
+# Window title
+PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
+# Prompty
 PS1="${USERSTRING}@\h ${MY_BROWN}\w${MYGITPROMPT} ${MY_CYAN}❯${MY_COLORRESET} "
 
 export GIT_PS1_SHOWCOLORHINTS=1
