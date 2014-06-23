@@ -1,10 +1,5 @@
-[user]
-  name = kb9zzw
-  email = kb9zzw@gmail.com
-[github]
-  name = kb9zzw
-  email = kb9zzw@gmail.com
-
+[include]
+  path = ~/.gitconfig-local
 [core]
   editor = vim
 [merge]
