@@ -47,3 +47,9 @@ then
     init_vim
   }
 fi
+
+# terminator
+if which terminator &> /dev/null
+then
+    fresh terminator/config --file=~/.config/terminator/config
+fi
