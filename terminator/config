@@ -1,0 +1,19 @@
+[global_config]
+  title_transmit_bg_color = "#003ac8"
+[keybindings]
+[profiles]
+  [[default]]
+    scrollback_lines = 4000
+    font = Ubuntu Mono 12
+    use_system_font = False
+    background_image = None
+    scrollbar_position = hidden
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
