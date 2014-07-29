@@ -17,3 +17,6 @@ nmap <F10> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
 " Window split navigation
 nmap <TAB> <C-w>
 nmap <TAB><TAB> <C-w>w
+
+" no 80char check on puppet
+let g:syntastic_puppet_puppetlint_args='--no-80chars-check'
