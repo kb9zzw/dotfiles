@@ -6,4 +6,4 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'plasticboy/vim-markdown'
-
+Bundle 'chase/vim-ansible-yaml'
