@@ -29,9 +29,9 @@ fi
 if which vim &> /dev/null
 then
   fresh-options --file=~/.vimrc --marker=\"
-    fresh twe4ked/dotfiles vim/vundle_before.vim
+    fresh vim/vundle_before.vim
     fresh vim/vundle.vim
-    fresh twe4ked/dotfiles vim/vundle_after.vim
+    fresh vim/vundle_after.vim
     fresh vim/vimrc
   fresh-options
 
