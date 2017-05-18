@@ -74,3 +74,8 @@ alias mv='mv -i'
 
 # color diff
 which colordiff &>/dev/null && alias diff=colordiff
+
+# Local mods
+if [ -f "${HOME}/.bash_profile_local" ]; then
+  . ${HOME}/.bash_profile_local
+fi
