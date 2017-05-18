@@ -1,14 +1,27 @@
 set nocompatible
 set modelines=2
+
+" number lines
 set nu
 
+" tabs to spaces
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+
+" incremental search
+set incsearch
+
+" highlight search results
+set hlsearch
+
+" syntax highlighting
 syntax on
 filetype plugin indent on
 colorscheme slate
+
+" shell
 set shell=/bin/bash
 
 nmap <F9> :set invpaste<CR>
@@ -20,3 +33,6 @@ nmap <TAB><TAB> <C-w>w
 
 " no 80char check on puppet
 let g:syntastic_puppet_puppetlint_args='--no-80chars-check'
+
+" disable code folding on markdown
+let g:vim_markdown_folding_disabled = 1
