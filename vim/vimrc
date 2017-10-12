@@ -36,3 +36,6 @@ let g:syntastic_puppet_puppetlint_args='--no-80chars-check'
 
 " disable code folding on markdown
 let g:vim_markdown_folding_disabled = 1
+
+" left-justify comments
+let g:NERDDefaultAlign = 'left'
