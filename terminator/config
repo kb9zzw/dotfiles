@@ -1,19 +1,40 @@
 [global_config]
   title_transmit_bg_color = "#003ac8"
 [keybindings]
-[profiles]
-  [[default]]
-    scrollback_lines = 4000
-    font = Ubuntu Mono 12
-    use_system_font = False
-    background_image = None
-    scrollbar_position = hidden
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 12
+    scrollback_lines = 4000
+    scrollbar_position = hidden
+    use_system_font = False
+  [[BigDark]]
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 24
+    scrollback_lines = 4000
+    scrollbar_position = hidden
+    use_system_font = False
+  [[BigLight]]
+    background_color = "#ffffff"
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 24
+    foreground_color = "#000000"
+    scrollback_lines = 4000
+    use_system_font = False
+  [[transparent]]
+    background_darkness = 0.25
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 12
+    scrollback_lines = 4000
+    scrollbar_position = hidden
+    use_system_font = False
