@@ -34,6 +34,15 @@ MY_LTPURPLE="\[\033[1;35m\]"
 MY_LTCYAN="\[\033[1;36m\]"
 MY_WHITE="\[\033[1;37m\]"
 
+# elipsize long hostnames
+trimhost() {
+  if [ "${#HOSTNAME}" -ge "10" ]; then
+    echo ${HOSTNAME:0:7}...
+  else
+    echo ${HOSTNAME}
+  fi
+}
+
 if [[ $(id -un) == 'root' ]]
 then
     USERSTRING="${MY_LTRED}\u"
@@ -59,7 +68,7 @@ fi
 # Window title
 PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
 # Prompty
-PS1="${USERSTRING}@\h ${MY_BROWN}\w${MYGITPROMPT} ${MY_CYAN}❯${MY_COLORRESET} "
+PS1="${USERSTRING}@$(trimhost) ${MY_BROWN}\w${MYGITPROMPT} ${MY_CYAN}❯${MY_COLORRESET} "
 
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWSTASHSTATE=1
