@@ -6,6 +6,7 @@ fresh freshshell/fresh bin/fresh --bin
 
 # gitconfig
 fresh gitconfig --file
+fresh gitignore --file
 
 # bash
 if which bash &> /dev/null
