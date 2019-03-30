@@ -1,6 +1,88 @@
 [include]
   path = ~/.gitconfig-local
+[user]
+  name = Jon Burroughs
+  email = kb9zzw@gmail.com
+  username = jburroug
 [core]
   editor = vim
+  exlcudesfile = ~/.gitignore
+[push]
+  default = matching
 [merge]
   tool = vimdiff
+[alias]
+  ###
+  a = add --all
+  ###
+  amend = commit --amend -m
+  ###
+  b = branch
+  ba = branch -a
+  bd = branch -d
+  bD = branch -D
+  ###
+  c = commit
+  ca = commit -a
+  cm = commit -m
+  cam = commit -am
+  ###
+  cl = clone
+  ###
+  cp = cherry-pick
+  ###
+  d = diff
+  dt = difftool
+  ###
+  f = fetch
+  fo = fetch origin
+  ###
+  l = log --oneline
+  lg = log --oneline --graph --decorate
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ###
+  ls = ls-files
+  ###
+  m = merge
+  ###
+  co = checkout
+  com = checkout master
+  cob = checkout -b
+  cod = checkout dev
+  ###
+  ps = push
+  pso = push origin
+  psom = push origin master
+  psod = push origin dev
+  pst = push --tags
+  ###
+  pl = pull
+  plo = pull origin
+  plom = pull origin master
+  plod = pull origin dev
+  ###
+  re = reset
+  rh = reset HEAD
+  reh = reset --hard
+  res = reset --soft
+  rehh = reset --hard HEAD
+  resh = reset --soft HEAD
+  ###
+  r = remote
+  ra = remote add
+  rr = remote rm
+  rv = remote -v
+  rn = remote rename
+  rao = remote add origin
+  rro = remote rm origin
+  ###
+  s = status
+  ###
+  sa = stash apply
+  ###
+  t = tag
+  td = tag -d
+  ###
+  dev = !git checkout dev && git pull origin dev
+  master = !git checkout master && git pull origin master

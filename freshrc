@@ -20,7 +20,9 @@ then
     fresh shell/bash/base.sh
     fresh shell/bash/fresh.sh
     fresh shell/bash/ls.sh
+    fresh shell/bash/git.sh
     fresh shell/bash/notes.sh
+    fresh shell/bash/docker.sh
   fresh-options
   fresh shell/bash/bashrc --file
 fi

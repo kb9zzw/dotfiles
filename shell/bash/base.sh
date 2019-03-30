@@ -1,7 +1,6 @@
 export CLICOLOR=''
 export EDITOR='vim'
 export PAGER='less -rFX'
-export GREP_OPTIONS='--color=auto'
 
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
@@ -71,6 +70,9 @@ export GIT_PS1_SHOWCOLORHINTS=1
 # foot gun prevention
 alias rm='rm -i'
 alias mv='mv -i'
+
+# Other aliases
+alias grep='grep --color=auto'
 
 # color diff
 which colordiff &>/dev/null && alias diff=colordiff
