@@ -73,6 +73,8 @@ alias mv='mv -i'
 
 # Other aliases
 alias grep='grep --color=auto'
+alias ..='cd ..'
+alias cd..='cd ..'
 
 # color diff
 which colordiff &>/dev/null && alias diff=colordiff
