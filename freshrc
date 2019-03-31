@@ -28,6 +28,14 @@ then
   fresh shell/bash/bashrc --file
 fi
 
+# zsh
+if which zsh &> /dev/null
+then
+  fresh-options --file=~/.zshrc --marker
+    fresh shell/zsh/base.zsh
+  fresh-options
+fi
+
 # vim
 if which vim &> /dev/null
 then

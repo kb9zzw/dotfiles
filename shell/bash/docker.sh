@@ -25,4 +25,4 @@ dri() { docker rmi $* $(docker images -q); }
 dsh() { docker exec -i -t $1 /bin/bash; }
 
 # Docker build
-db() { docker build -t="$1"; }
+db() { docker build -t="$1" .; }
