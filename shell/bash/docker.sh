@@ -6,11 +6,17 @@ alias d="docker"
 # Docker PS
 alias dps="docker ps"
 
+# Docker inspect
+alias di="docker inspect"
+
 # Docker images
 alias dim="docker images"
 
+# Docker run
+alias dr="docker run --rm"
+
 # Run container in daemon mode
-drd() { docker run --rm -d -P $*; }
+alias drd="docker run --rm -d"
 
 # Stop all containers
 dstop() { docker stop $* $(docker ps -q -a); }
