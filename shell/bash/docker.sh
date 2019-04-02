@@ -7,28 +7,59 @@ alias d="docker"
 alias dps="docker ps"
 
 # Docker inspect
-alias di="docker inspect"
+alias din="docker inspect"
 
 # Docker images
 alias dim="docker images"
 
 # Docker run
-alias dr="docker run --rm"
+alias drun="docker run --rm"
 
-# Run container in daemon mode
-alias drd="docker run --rm -d"
+# Docker run in daemon mode
+alias drund="docker run --rm -d"
+
+# Docker stop
+alias dstop="docker stop"
+
+# Docker rm
+alias drm="docker rm"
+
+# Docker rmi
+alias drmi="docker rmi"
+
+# Docker logs
+alias dlogs="docker logs"
+
+# Docker stat
+alias dstats="docker stats"
+
+# Docker build
+alias dbuild="docker build"
+
+# Docker exec
+alias dexec="docker exec"
+
+# Docker volume
+alias dvol="docker volume"
 
 # Stop all containers
-dstop() { docker stop $* $(docker ps -q -a); }
+dstopall() { docker stop $* $(docker ps -q -a); }
 
 # Remove all containers
-drm() { docker rm $* $(docker ps -q -a); }
+drmall() { docker rm $* $(docker ps -q -a); }
 
 # Remove all images
-dri() { docker rmi $* $(docker images -q); }
+drmiall() { docker rmi $* $(docker images -q); }
+
+# Cleanup 
+dclean() { 
+  docker rm $(docker ps -q -a -f status=exited)
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
+# Reclaim everything
+dprune() { docker system prune -af; }
 
 # Shell login to container
 dsh() { docker exec -i -t $1 /bin/bash; }
 
-# Docker build
-db() { docker build -t="$1" .; }
