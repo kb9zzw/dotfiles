@@ -40,6 +40,9 @@ let g:vim_markdown_folding_disabled = 1
 " left-justify comments
 let g:NERDDefaultAlign = 'left'
 
+" nerdtree file browser
+map <C-o> :NERDTreeToggle<CR>
+
 " status line
 set laststatus=2
 set noshowmode
