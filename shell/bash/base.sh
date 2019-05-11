@@ -2,6 +2,9 @@ export CLICOLOR=''
 export EDITOR='vim'
 export PAGER='less -rFX'
 
+# CD Path
+export CDPATH=.:~:/etc:/var
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
 if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -46,11 +49,10 @@ trimhost() {
 if [[ $(id -un) == 'root' ]]
 then
     USERSTRING="${MY_LTRED}\u"
-elif [[ $(id -un) == 'jburroug' || $(id -un) == 'jon.burroughs' ]]
-then
-    USERSTRING="${MY_GREEN}"
+    PROMPT_CHAR="${MY_LTRED}#"
 else
     USERSTRING="${MY_GREEN}\u"
+    PROMPT_CHAR="${MY_CYAN}>"
 fi
 
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] # centos
@@ -65,10 +67,20 @@ else
     MYGITPROMPT=''
 fi
 
+# Virtualenv prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+venvprompt() {
+  if [ -n "${VIRTUAL_ENV}" ]; then
+    echo -ne "<$(basename $VIRTUAL_ENV)> "
+  fi
+}
+
+MY_VENV_PROMPT="${MY_YELLOW}\$(venvprompt)"
+
 # Window title
 PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
 # Prompty
-PS1="${USERSTRING}@$(trimhost) ${MY_BROWN}\w${MYGITPROMPT} ${MY_CYAN}❯${MY_COLORRESET} "
+PS1="${MY_VENV_PROMPT}${USERSTRING}@${HOSTNAME} ${MY_BROWN}\w${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
 
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWSTASHSTATE=1
