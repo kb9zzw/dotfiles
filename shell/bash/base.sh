@@ -78,11 +78,14 @@ set_prompt() {
   if [[ $(id -un) == 'root' ]]
   then
     USERSTRING="${MY_LTRED}\u"
-    PROMPT_CHAR="${MY_LTRED}#"
+    PS1_MARK="${MY_LTRED}#"
+    PS2_MARK=">"
   else
     USERSTRING="${MY_GREEN}\u"
-    x=$'\u25b8' # bullet
-    PROMPT_CHAR="${MY_CYAN}${x}"
+    x=$'\u25b8' # filled bullet
+    y=$'\u25b9' # open bullet
+    PS1_MARK="${MY_CYAN}${x}"
+    PS2_MARK="${MY_CYAN}${y}"
   fi
 
   # Git prompt
@@ -111,10 +114,14 @@ set_prompt() {
   fi
 
   # Prompt
-  PS1="${USERSTRING}@${HOSTNAME}${MY_EXIT_STATUS}${MY_VENV}${MY_CWD}${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
+  PS1="${USERSTRING}@${HOSTNAME}${MY_EXIT_STATUS}${MY_VENV}${MY_CWD}${MYGITPROMPT}\n${PS1_MARK}${MY_COLORRESET} "
+  PS2="${PS2_MARK} "
 
   # Window title
   echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"
+
+  # append history immediately
+  history -a
 }
 
 # Dynamic prompt
@@ -155,4 +162,3 @@ export HISTIGNORE="ls:history"
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a" # immediately append
