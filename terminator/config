@@ -1,5 +1,6 @@
 [global_config]
   title_transmit_bg_color = "#003ac8"
+  enabled_plugins = "LaunchpadCodeURLHandler,LaunchpadBugURLHandler,APTURLHandler,Logger,TerminalShot"
 [keybindings]
 [layouts]
   [[default]]
