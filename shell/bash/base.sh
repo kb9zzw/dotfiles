@@ -79,7 +79,7 @@ set_prompt() {
   then
     USERSTRING="${MY_LTRED}\u"
     PS1_MARK="${MY_LTRED}#"
-    PS2_MARK=">"
+    PS2_MARK="${MY_LTRED}>"
   else
     USERSTRING="${MY_GREEN}\u"
     x=$'\u25b8' # filled bullet
@@ -115,7 +115,7 @@ set_prompt() {
 
   # Prompt
   PS1="${USERSTRING}@${HOSTNAME}${MY_EXIT_STATUS}${MY_VENV}${MY_CWD}${MYGITPROMPT}\n${PS1_MARK}${MY_COLORRESET} "
-  PS2="${PS2_MARK} "
+  PS2="${PS2_MARK}${MY_COLORRESET} "
 
   # Window title
   echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"
