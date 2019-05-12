@@ -56,52 +56,69 @@ trimhost() {
   fi
 }
 
-# Prompt userstring and character
-if [[ $(id -un) == 'root' ]]
-then
-    USERSTRING="${MY_LTRED}\u"
-    PROMPT_CHAR="${MY_LTRED}#"
-else
-    USERSTRING="${MY_GREEN}\u"
-    x=$'\u25b8' # bullet
-    PROMPT_CHAR="${MY_CYAN}${x}"
-fi
-
-# Git prompt
+# Load git prompt
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] # centos
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
-
-if declare -f __git_ps1 > /dev/null 2>&1
-then
-    MYGITPROMPT="${MY_PURPLE}\$(__git_ps1)"
-else
-    MYGITPROMPT=''
-fi
-
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWCOLORHINTS=1
 
-# Python virtualenv prompt
+# Disable virtual environment handling of prompt, we'll take care of it ourselves.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-venvprompt() {
-  if [ -n "${VIRTUAL_ENV}" ]; then
-    echo -ne "<$(basename $VIRTUAL_ENV)> "
+
+# Prompt command
+set_prompt() {
+  local exit=$?
+
+  # Userstring
+  if [[ $(id -un) == 'root' ]]
+  then
+    USERSTRING="${MY_LTRED}\u"
+    PROMPT_CHAR="${MY_LTRED}#"
+  else
+    USERSTRING="${MY_GREEN}\u"
+    x=$'\u25b8' # bullet
+    PROMPT_CHAR="${MY_CYAN}${x}"
   fi
+
+  # Git prompt
+  if declare -f __git_ps1 > /dev/null 2>&1
+  then
+    MYGITPROMPT="${MY_PURPLE}\$(__git_ps1)"
+  else
+    MYGITPROMPT=''
+  fi
+
+  # Python virtual env
+  if [ -n "${VIRTUAL_ENV}" ]; then
+    MY_VENV=" ${MY_YELLOW}<$(basename $VIRTUAL_ENV)>"
+  else
+    MY_VENV=''
+  fi
+
+  # Current working directory
+  MY_CWD=" ${MY_BROWN}\w"
+
+  # exit status 
+  if [[ "$exit" -ne 0 ]]; then
+    MY_EXIT_STATUS=" ${MY_RED}$exit"
+  else 
+    MY_EXIT_STATUS=''
+  fi
+
+  # Prompt
+  PS1="${USERSTRING}@${HOSTNAME}${MY_EXIT_STATUS}${MY_VENV}${MY_CWD}${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
+
+  # Window title
+  echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"
 }
-MY_VENV_PROMPT="${MY_YELLOW}\$(venvprompt)"
 
-# Current working directory
-MY_CWD="${MY_BROWN}\w"
-
-# Window title
-PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
-# Prompty
-PS1="${MY_VENV_PROMPT}${USERSTRING}@${HOSTNAME} ${MY_CWD}${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
+# Dynamic prompt
+PROMPT_COMMAND=set_prompt
 
 # foot gun prevention
 alias rm='rm -i'
