@@ -1,6 +1,11 @@
+# Shell options
+shopt -s histappend
+shopt -s cdspell
+
 export CLICOLOR=''
 export EDITOR='vim'
 export PAGER='less -rFX'
+export LANG='en_US.UTF-8'
 
 # CD Path
 export CDPATH=.:~:/etc:/var
@@ -13,6 +18,7 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /etc/bash_completion
   fi
 fi
+
 # Prompt settings
 
 # shorten long paths
@@ -46,15 +52,18 @@ trimhost() {
   fi
 }
 
+# Prompt userstring and character
 if [[ $(id -un) == 'root' ]]
 then
     USERSTRING="${MY_LTRED}\u"
     PROMPT_CHAR="${MY_LTRED}#"
 else
     USERSTRING="${MY_GREEN}\u"
-    PROMPT_CHAR="${MY_CYAN}>"
+    x=$'\u25b8' # bullet
+    PROMPT_CHAR="${MY_CYAN}${x}"
 fi
 
+# Git prompt
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] # centos
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
@@ -67,30 +76,33 @@ else
     MYGITPROMPT=''
 fi
 
-# Virtualenv prompt
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-venvprompt() {
-  if [ -n "${VIRTUAL_ENV}" ]; then
-    echo -ne "<$(basename $VIRTUAL_ENV)> "
-  fi
-}
-
-MY_VENV_PROMPT="${MY_YELLOW}\$(venvprompt)"
-
-# Window title
-PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
-# Prompty
-PS1="${MY_VENV_PROMPT}${USERSTRING}@${HOSTNAME} ${MY_BROWN}\w${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
-
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWCOLORHINTS=1
 
+# Python virtualenv prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+venvprompt() {
+  if [ -n "${VIRTUAL_ENV}" ]; then
+    echo -ne "<$(basename $VIRTUAL_ENV)> "
+  fi
+}
+MY_VENV_PROMPT="${MY_YELLOW}\$(venvprompt)"
+
+# Current working directory
+MY_CWD="${MY_BROWN}\w"
+
+# Window title
+PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}"; echo -ne "\007"'
+# Prompty
+PS1="${MY_VENV_PROMPT}${USERSTRING}@${HOSTNAME} ${MY_CWD}${MYGITPROMPT}\n${PROMPT_CHAR}${MY_COLORRESET} "
+
 # foot gun prevention
 alias rm='rm -i'
 alias mv='mv -i'
+alias cp="cp -i"
 
 # Other aliases
 alias grep='grep --color=auto'
