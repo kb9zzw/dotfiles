@@ -13,28 +13,27 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
-    font = Monospace 12
-    scrollback_lines = 4000
+    scrollback_lines = 10000
     scrollbar_position = hidden
-    use_system_font = False
+    use_system_font = True
   [[BigDark]]
     cursor_color = "#aaaaaa"
-    font = Monospace 24
-    scrollback_lines = 4000
+    font = Monospace Regular 24
+    scrollback_lines = 10000
     scrollbar_position = hidden
     use_system_font = False
   [[BigLight]]
     background_color = "#ffffff"
     cursor_color = "#aaaaaa"
-    font = Monospace 24
+    font = Monospace Regular 24
     foreground_color = "#000000"
-    scrollback_lines = 4000
+    scrollback_lines = 10000
     use_system_font = False
-  [[transparent]]
-    background_darkness = 0.25
+  [[Transparent]]
+    background_darkness = 0.8
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Monospace 12
-    scrollback_lines = 4000
+    font = Monospace Regular 12
+    scrollback_lines = 10000
     scrollbar_position = hidden
     use_system_font = False
