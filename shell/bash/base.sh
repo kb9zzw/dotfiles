@@ -1,10 +1,13 @@
-# Shell options
-shopt -s histappend
+# Fix spelling errors in cd
 shopt -s cdspell
 
-export CLICOLOR=''
+# Default editor
 export EDITOR='vim'
+
+# Set pager
 export PAGER='less -rFX'
+
+# Set UTF8
 export LANG='en_US.UTF-8'
 
 # CD Path
@@ -25,6 +28,7 @@ fi
 export PROMPT_DIRTRIM=2
 
 # color settings
+export CLICOLOR=''
 MY_COLORRESET="\[\033[0m\]"
 MY_RED="\[\033[0;31m\]"
 MY_GREEN="\[\033[0;32m\]"
@@ -116,3 +120,22 @@ which colordiff &>/dev/null && alias diff=colordiff
 if [ -f "${HOME}/.bash_profile_local" ]; then
   . ${HOME}/.bash_profile_local
 fi
+
+# Colorized less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# History
+shopt -s histappend
+shopt -s cmdhist
+export HISTCONTROL=ignoredups:ignoreboth:ignorespace
+export HISTIGNORE="ls:history"
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+PROMPT_COMMAND="$PROMPT_COMMAND; history -a" # immediately append
