@@ -24,6 +24,7 @@ then
     fresh shell/bash/git.sh
     fresh shell/bash/notes.sh
     fresh shell/bash/docker.sh
+    fresh shell/bash/python.sh
   fresh-options
   fresh shell/bash/bashrc --file
 fi
