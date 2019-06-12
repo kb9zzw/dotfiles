@@ -1,5 +1,8 @@
+" using vim
 set nocompatible
-set modelines=2
+
+" disable modelines
+set nomodeline
 
 " number lines
 set nu
@@ -57,3 +60,15 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+" cloudformation filetype
+au BufRead,BufNewFile *.cfn.yml set filetype=yaml.cloudformation
+au BufRead,BufNewFile *.cfn.yaml set filetype=yaml.cloudformation
+au BufRead,BufNewFile *.cfn set filetype=yaml.cloudformation
+
+" linting
+let g:ale_linters = { 'python': ['pylint'],
+      \ 'yaml.cloudformation': ['yamllint', 'cloudformation'],
+      \ 'yaml': ['yamllint'] }
+
+highlight ALEError ctermbg=lightred
