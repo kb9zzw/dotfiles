@@ -60,8 +60,26 @@ then
   }
 fi
 
+# neovim
+if which nvim &> /dev/null
+then
+  fresh nvim/init.vim --file=~/.config/nvim/init.vim
+fi
+
 # terminator
 if which terminator &> /dev/null
 then
     fresh terminator/config --file=~/.config/terminator/config
+fi
+
+# yamllint
+if which yamllint &> /dev/null
+then
+    fresh yamllint/config --file=~/.config/yamllint/config
+fi
+
+# pylint
+if which pylint &> /dev/null
+then
+    fresh pylintrc --file=~/.pylintrc
 fi

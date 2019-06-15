@@ -1,8 +1,15 @@
 # Fix spelling errors in cd
 shopt -s cdspell
 
-# Default editor
-export EDITOR='vim'
+# Default editor, prefer nvim
+if $(which nvim &> /dev/null); then
+  alias vi='nvim'
+  alias vim='nvim'
+  export EDITOR='nvim'
+else
+  alias vi='vim'
+  export EDITOR='vim'
+fi
 
 # Set pager
 export PAGER='less -rFX'
