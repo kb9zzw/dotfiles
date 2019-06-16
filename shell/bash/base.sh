@@ -17,9 +17,6 @@ export PAGER='less -rFX'
 # Set UTF8
 export LANG='en_US.UTF-8'
 
-# CD Path
-export CDPATH=.:~:/etc:/var
-
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
 if [ -f /usr/share/bash-completion/bash_completion ]; then
