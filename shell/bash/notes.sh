@@ -1,22 +1,58 @@
-# notes
-alias cln="cat ~/notes/\`ls -1t ~/notes | head -n1\`"
-
-#function aln {
-#  fc -l $1 $1 >> 
-#}
-alias eln="vim ~/notes/\`ls -1t ~/notes | head -n1\`"
-function elng {
-  filename=`grep -H "$1" ~/notes/* | cut -f1 -d\: | sort -u | head -n1`
-  if [ -e $filename ]
-  then
-    vim $filename
+# Initialize notes
+function init_notes {
+  if [-n "$1"]; then
+    git clone $1 ~/notes
   else
-    echo "no note found"
+    git clone -o bare https://github.com/kb9zzw/notes-bare.git ~/notes
   fi
 }
-alias nn="vim ~/notes/\`date +%Y-%m-%d_%H%M\`.txt"
-function nnn {
-  vim ~/notes/$1.txt
+
+# New note
+function nn {
+  if [ -n "$1" ]; then
+    $EDITOR ~/notes/docs/topics/$1.md
+  else
+    $EDITOR ~/notes/docs/timestamp/$(date +%Y-%m-%d_%H%M).md
+  fi
 }
-alias lnn="ls -lt ~/notes"
-alias lln="ls -1 ~/notes/\`ls -1t ~/notes | head -n1\`"
+
+# Edit note
+function en {
+  if [ -n "$1" ]; then
+    $EDITOR ~/notes/topics/$1.md
+  else
+    $EDITOR ~/notes/docs/timestamp/$(ls -1t ~/notes | head -n1)
+  fi
+}
+
+# Web note
+function wn {
+  if [ -n "$1" ]; then
+    port=$1
+  else
+    port=8000
+  fi
+  $(cd ~/notes && mkdocs serve -a localhost:$port)
+}
+
+# Publish notes to git
+function pn {
+  pushd ~/notes
+  if [ -n "$1" ]; then
+    git push $1 master
+  else
+    git push origin master
+  fi
+  popd
+}
+
+# Pull notes from git
+function pln {
+  pushd ~/notes
+  if [ -n "$1" ]; then
+    git pull $1 master
+  else
+    git pull origin master
+  fi
+  popd
+}
