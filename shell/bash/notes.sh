@@ -3,8 +3,9 @@ function init_notes {
   if [-n "$1"]; then
     git clone $1 ~/notes
   else
-    git clone -o bare https://github.com/kb9zzw/notes-bare.git ~/notes
+    git clone -o bare https://gitlab.com/kb9zzw/notes-bare.git ~/notes
   fi
+  git remote rm bare
 }
 
 # New note
@@ -19,9 +20,9 @@ function nn {
 # Edit note
 function en {
   if [ -n "$1" ]; then
-    $EDITOR ~/notes/topics/$1.md
+    $EDITOR ~/notes/docs/topics/$1.md
   else
-    $EDITOR ~/notes/docs/timestamp/$(ls -1t ~/notes | head -n1)
+    $EDITOR ~/notes/docs/timestamp/$(ls -1t ~/notes/docs/timestamp | head -n1)
   fi
 }
 
@@ -36,8 +37,10 @@ function wn {
 }
 
 # Publish notes to git
-function pn {
+function psn {
   pushd ~/notes
+  git add -A .
+  git commit -m "notes $(date)"
   if [ -n "$1" ]; then
     git push $1 master
   else
