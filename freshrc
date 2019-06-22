@@ -9,7 +9,7 @@ fresh gitconfig --file
 fresh gitignore --file
 
 # bash
-if which bash &> /dev/null
+if command -v bash &> /dev/null
 then
   fresh-options --file=~/.bash_profile --marker
     # OS-specific stuff
@@ -30,7 +30,7 @@ then
 fi
 
 # zsh
-if which zsh &> /dev/null
+if command -v zsh &> /dev/null
 then
   fresh-options --file=~/.zshrc --marker
     fresh shell/zsh/base.zsh
@@ -38,7 +38,7 @@ then
 fi
 
 # vim
-if which vim &> /dev/null
+if command -v vim &> /dev/null
 then
   fresh-options --file=~/.vimrc --marker=\"
     fresh vim/vundle_before.vim
@@ -61,25 +61,25 @@ then
 fi
 
 # neovim
-if which nvim &> /dev/null
+if command -v nvim &> /dev/null
 then
   fresh nvim/init.vim --file=~/.config/nvim/init.vim
 fi
 
 # terminator
-if which terminator &> /dev/null
+if command -v terminator &> /dev/null
 then
     fresh terminator/config --file=~/.config/terminator/config
 fi
 
 # yamllint
-if which yamllint &> /dev/null
+if command -v yamllint &> /dev/null
 then
     fresh yamllint/config --file=~/.config/yamllint/config
 fi
 
 # pylint
-if which pylint &> /dev/null
+if command -v pylint &> /dev/null
 then
     fresh pylintrc --file=~/.pylintrc
 fi
