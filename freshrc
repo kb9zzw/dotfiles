@@ -8,7 +8,7 @@ fresh gitconfig --file
 fresh gitignore --file
 
 # Backup existing files
-for file in ~/.bashrc ~/.bash_profile
+for file in ~/.bashrc ~/.bash_profile ~/.zshrc
 do
   if [ ! -L "$file" ]
   then
