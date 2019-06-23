@@ -10,7 +10,7 @@ fresh gitignore --file
 # Backup existing files
 for file in ~/.bashrc ~/.bash_profile ~/.zshrc
 do
-  if [ -e "$file" ] && [ -L "$file" ]
+  if [ -e "$file" ] && [ ! -L "$file" ]
   then
     mv -f $file $file.bak
   fi
