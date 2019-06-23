@@ -46,7 +46,7 @@ then
 fi
 
 # vim
-if command -v vim &> /dev/null
+if command -v vim &> /dev/null || command -v nvim &> /dev/null
 then
   fresh-options --file=~/.vimrc --marker=\"
     fresh vim/vundle_before.vim
