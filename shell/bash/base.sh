@@ -103,6 +103,8 @@ set_prompt() {
   # Python virtual env
   if [ -n "${VIRTUAL_ENV}" ]; then
     MY_VENV=" ${MY_YELLOW}<$(basename $VIRTUAL_ENV)>"
+  elif [ -n "${CONDA_DEFAULT_ENV}" ] && [ "${CONDA_DEFAULT_ENV}" != 'base' ]; then
+    MY_VENV=" ${MY_YELLOW}<${CONDA_DEFAULT_ENV}>"
   else
     MY_VENV=''
   fi

@@ -33,6 +33,7 @@ then
     fresh shell/bash/notes.sh
     fresh shell/bash/docker.sh
     fresh shell/bash/python.sh
+    fresh shell/bash/conda.sh
   fresh-options
   fresh shell/bash/bashrc --file
 fi
@@ -90,4 +91,10 @@ fi
 if command -v pylint &> /dev/null
 then
     fresh pylintrc --file=~/.pylintrc
+fi
+
+# anaconda
+if command -v conda &> /dev/null
+then
+    fresh condarc --file=~/.condarc
 fi
