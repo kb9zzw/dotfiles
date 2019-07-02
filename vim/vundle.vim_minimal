@@ -1,0 +1,1 @@
+Plugin 'itchyny/lightline.vim'

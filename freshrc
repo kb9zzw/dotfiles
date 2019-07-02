@@ -51,7 +51,7 @@ if command -v vim &> /dev/null || command -v nvim &> /dev/null
 then
   fresh-options --file=~/.vimrc --marker=\"
     fresh vim/vundle_before.vim
-    fresh vim/vundle.vim
+    fresh vim/vundle.vim${DOTFILES_ENVIRONMENT}
     fresh vim/vundle_after.vim
     fresh vim/vimrc
   fresh-options
