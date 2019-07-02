@@ -1,4 +1,5 @@
 let run_bundle_install = 0
+let vundle_src = "https://github.com/gmarik.vundle"
 
 if !isdirectory(expand("~/.vim/bundle/vundle/"))
   silent !echo "Installing Vundle..."

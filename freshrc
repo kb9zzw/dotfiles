@@ -3,9 +3,8 @@
 # handles updating fresh
 fresh freshshell/fresh bin/fresh --bin
 
-# gitconfig
-fresh gitconfig --file
-fresh gitignore --file
+# Set profile to 'default' if undefined
+[ -z ${PROFILE+x} ] && PROFILE=default
 
 # Backup existing files
 for file in ~/.bashrc ~/.bash_profile ~/.zshrc
@@ -16,85 +15,82 @@ do
   fi
 done
 
-# bash
-if command -v bash &> /dev/null
-then
-  fresh-options --file=~/.bash_profile --marker
-    # OS-specific stuff
-    if [[ "$(uname)" == "Darwin" ]]; then
-      fresh shell/bash/mac.sh
-    fi
+# .gitconfig
+fresh-options --file=~/.gitconfig --marker --ignore-missing
+  fresh gitconfig/base
+  fresh gitconfig/$PROFILE
+fresh-options
 
-    # Base profile settings
-    fresh shell/bash/base.sh
-    fresh shell/bash/fresh.sh
-    fresh shell/bash/ls.sh
-    fresh shell/bash/git.sh
-    fresh shell/bash/notes.sh
-    fresh shell/bash/docker.sh
-    fresh shell/bash/python.sh
-    fresh shell/bash/conda.sh
-  fresh-options
-  fresh shell/bash/bashrc --file
-fi
+# .gitignore
+fresh-options --file=~/.gitignore --marker --ignore-missing
+  fresh gitignore/base
+  fresh gitignore/$PROFILE
+fresh-options
 
-# zsh
-if command -v zsh &> /dev/null
-then
-  fresh-options --file=~/.zshrc --marker
-    fresh shell/zsh/base.zsh
-  fresh-options
-fi
+# .bash_profile
+fresh-options --file=~/.bash_profile --marker --ignore-missing
+  # Base config
+  fresh bash_profile/base
+  fresh bash_profile/fresh
+  fresh bash_profile/ls
+  fresh bash_profile/git
+  fresh bash_profile/notes
+  fresh bash_profile/docker
+  fresh bash_profile/python
+  fresh bash_profile/conda
 
-# vim
-if command -v vim &> /dev/null || command -v nvim &> /dev/null
-then
-  fresh-options --file=~/.vimrc --marker=\"
-    fresh vim/vundle_before.vim
-    fresh vim/vundle.vim
-    fresh vim/vundle_after.vim
-    fresh vim/vimrc
-  fresh-options
+  # OS-specific stuff
+  if [[ "$(uname)" == "Darwin" ]]; then
+    fresh bash_profile/darwin
+  fi
 
-  fresh vim/ftplugin/python.vim --file=~/.vim/after/ftplugin/python.vim
+  # Environment-specific stuff
+  fresh bash_profile/$PROFILE
+fresh-options
 
-  init_vim() {
-    if which vim &> /dev/null && ! [ -d $HOME/.vim/bundle/vundle ]; then
-      vim || [ -d $HOME/.vim/bundle/vundle ]
-    fi
-  }
+# .bashrc
+fresh-options --file=~/.bashrc  --marker --ignore-missing
+  fresh bashrc/base
+  fresh bashrc/$PROFILE
+fresh-options
 
-  fresh_after_build() {
-    init_vim
-  }
-fi
+# .zshrc
+fresh-options --file=~/.zshrc --marker --ignore-missing
+  fresh zshrc/base
+  fresh zshrc/$PROFILE
+fresh-options
 
-# neovim
-if command -v nvim &> /dev/null
-then
-  fresh nvim/init.vim --file=~/.config/nvim/init.vim
-fi
+# .vimrc
+fresh-options --file=~/.vimrc --marker=\" --ignore-missing
+  fresh vimrc/vundle.$PROFILE
+  fresh vimrc/base
+fresh-options
 
-# terminator
-if command -v terminator &> /dev/null
-then
-    fresh terminator/config --file=~/.config/terminator/config
-fi
+# .vim/ftplugin/python.vim
+fresh vim/ftplugin/python.vim --file=~/.vim/after/ftplugin/python.vim
 
-# yamllint
-if command -v yamllint &> /dev/null
-then
-    fresh yamllint/config --file=~/.config/yamllint/config
-fi
+# initialze vim
+init_vim() {
+  if command -v vim &> /dev/null && ! [ -d $HOME/.vim/bundle/Vundle.vim ]; then
+    vim || [ -d $HOME/.vim/bundle/Vundle.vim ]
+  fi
+}
 
-# pylint
-if command -v pylint &> /dev/null
-then
-    fresh pylintrc --file=~/.pylintrc
-fi
+fresh_after_build() {
+  init_vim
+}
 
-# anaconda
-if command -v conda &> /dev/null
-then
-    fresh condarc --file=~/.condarc
-fi
+# .config/nvim/init.vim
+fresh config/nvim/init.vim --file=~/.config/nvim/init.vim
+
+# .config/terminator/config
+fresh config/terminator/config --file=~/.config/terminator/config
+
+# .config/yamllint/config
+fresh config/yamllint/config --file=~/.config/yamllint/config
+
+# .pylintrc
+fresh pylintrc/base --file=~/.pylintrc
+
+# .condarc
+fresh condarc/base --file=~/.condarc
