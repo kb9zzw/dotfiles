@@ -168,3 +168,11 @@ export HISTIGNORE="ls:history"
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export HISTFILESIZE=10000
 export HISTSIZE=10000
+
+# Path Munging
+for path in ~/bin ~/.local/bin; do
+  if [ -e "$path" ]; then
+    PATH=${path}:${PATH}
+  fi
+done
+export PATH
