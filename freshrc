@@ -60,6 +60,9 @@ fresh-options --file=~/.zshrc --marker --ignore-missing
   fresh zshrc/$PROFILE
 fresh-options
 
+# .inputrc
+fresh inputrc/base --file=~/.inputrc
+
 # .vimrc
 fresh-options --file=~/.vimrc --marker=\" --ignore-missing
   fresh vimrc/vundle.$PROFILE

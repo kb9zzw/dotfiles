@@ -1,0 +1,11 @@
+# Undo cd with Alt-z
+"\ez": 'cd -\015'
+
+# Alt-Return = edit command in place
+"\e\C-m": '\C-a "$(\C-e)"\C-a'
+
+# Friendly command history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
