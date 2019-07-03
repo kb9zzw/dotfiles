@@ -72,12 +72,9 @@ fresh vim/ftplugin/python.vim --file=~/.vim/after/ftplugin/python.vim
 # initialze vim
 init_vim() {
   if command -v vim &> /dev/null && ! [ -d $HOME/.vim/bundle/Vundle.vim ]; then
+    echo "initializing vim"
     vim || [ -d $HOME/.vim/bundle/Vundle.vim ]
   fi
-}
-
-fresh_after_build() {
-  init_vim
 }
 
 # .config/nvim/init.vim
@@ -94,3 +91,20 @@ fresh pylintrc/base --file=~/.pylintrc
 
 # .condarc
 fresh condarc/base --file=~/.condarc
+
+# .vscode
+fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt
+fresh vscode/vscode_extensions.sh --bin=~/bin/vscode_extensions.sh
+
+init_vscode() {
+  if command -v code &> /dev/null && ! [ -d $HOME/.vscode/extensions ]; then
+    echo "initializing vscode"
+    $HOME/bin/vscode_extensions.sh
+  fi
+}
+
+# Post-processing
+fresh_after_build() {
+  init_vim
+  init_vscode
+}
