@@ -96,7 +96,7 @@ fresh pylintrc/base --file=~/.pylintrc
 fresh condarc/base --file=~/.condarc
 
 # .vscode
-fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt
+fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt --ignore-missing
 fresh vscode/vscode_extensions.sh --bin=~/bin/vscode_extensions.sh
 
 # initialize vscode
