@@ -99,6 +99,7 @@ fresh condarc/base --file=~/.condarc
 fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt
 fresh vscode/vscode_extensions.sh --bin=~/bin/vscode_extensions.sh
 
+# initialize vscode
 init_vscode() {
   if command -v code &> /dev/null && ! [ -d $HOME/.vscode/extensions ]; then
     echo "initializing vscode"
