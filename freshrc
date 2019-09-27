@@ -38,6 +38,8 @@ fresh-options --file=~/.bash_profile --marker --ignore-missing
   fresh bash_profile/docker
   fresh bash_profile/python
   fresh bash_profile/conda
+  fresh bash_profile/kubernetes
+  fresh bash_profile/openssl
 
   # OS-specific stuff
   if [[ "$(uname)" == "Darwin" ]]; then
@@ -96,7 +98,7 @@ fresh pylintrc/base --file=~/.pylintrc
 fresh condarc/base --file=~/.condarc
 
 # .vscode
-fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt
+fresh vscode/extensions.txt.$PROFILE --file=~/.vscode/extensions.txt --ignore-missing
 fresh vscode/vscode_extensions.sh --bin=~/bin/vscode_extensions.sh
 
 # initialize vscode

@@ -1,0 +1,25 @@
+# Kubernetes functions and aliases
+
+# kubectl
+alias k="kubectl"
+
+# kubeadmn
+alias ka='kubeadm'
+
+# kubectl get nodes
+alias kgn='kubectl get nodes'
+
+# kubectl get deployments
+alias kgd='kubectl get deployments'
+
+# kubectl get pods
+alias kgp='kubectl get pods'
+
+# kubectl get replicasets
+alias kgr='kubectl get replicasets'
+
+# kubectl get configmaps
+alias kgc='kubectl get configmaps'
+
+# kubectl get secrets
+alias kgs='kubectl get secrets'
