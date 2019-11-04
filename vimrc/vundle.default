@@ -32,6 +32,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'w0rp/ale'
+Plugin 'hashivim/vim-terraform'
 
 call vundle#end()
 
