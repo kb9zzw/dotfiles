@@ -86,8 +86,10 @@ set_prompt() {
     PS2_MARK="${MY_LTRED}>"
   else
     USERSTRING="${MY_GREEN}\u"
-    x=$'\u25b8' # filled bullet
-    y=$'\u25b9' # open bullet
+    #x=$'\u25b8' # filled bullet
+    #`y=$'\u25b9' # open bullet
+    x="->"
+    y=">"
     PS1_MARK="${MY_CYAN}${x}"
     PS2_MARK="${MY_CYAN}${y}"
   fi
@@ -137,6 +139,9 @@ PROMPT_COMMAND=set_prompt
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp="cp -i"
+
+# Power Clear!
+alias clear="printf '\33c\e[3J'"
 
 # Other aliases
 alias grep='grep --color=auto'
