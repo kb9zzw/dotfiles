@@ -86,10 +86,8 @@ set_prompt() {
     PS2_MARK="${MY_LTRED}>"
   else
     USERSTRING="${MY_GREEN}\u"
-    #x=$'\u25b8' # filled bullet
-    #`y=$'\u25b9' # open bullet
-    x="->"
-    y=">"
+    x=$'\u25b8' # filled bullet
+    y=$'\u25b9' # open bullet
     PS1_MARK="${MY_CYAN}${x}"
     PS2_MARK="${MY_CYAN}${y}"
   fi
