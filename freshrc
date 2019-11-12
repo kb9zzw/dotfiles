@@ -108,6 +108,10 @@ init_vscode() {
     $HOME/bin/vscode_extensions.sh
   fi
 }
+# MacOS-specific stuff
+if [[ "$(uname)" == "Darwin" ]]; then
+  fresh darwin/DefaultKeyBinding.dict --file ~/Library/KeyBindings/DefaultKeyBinding.dict
+fi
 
 # Post-processing
 fresh_after_build() {
