@@ -65,6 +65,10 @@ if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] # centos
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
+if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]
+then
+    source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+fi
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -86,8 +90,10 @@ set_prompt() {
     PS2_MARK="${MY_LTRED}>"
   else
     USERSTRING="${MY_GREEN}\u"
-    x=$'\u25b8' # filled bullet
-    y=$'\u25b9' # open bullet
+    #x=$'\u25b8' # filled bullet
+    #y=$'\u25b9' # open bullet
+    x='->'
+    y='..'
     PS1_MARK="${MY_CYAN}${x}"
     PS2_MARK="${MY_CYAN}${y}"
   fi
