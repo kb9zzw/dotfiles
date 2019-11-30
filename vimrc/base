@@ -24,8 +24,8 @@ colorscheme slate
 " shell
 set shell=/bin/bash
 
-nmap <F9> :set invpaste<CR>
-nmap <F10> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
+nmap <C-p> :set invpaste<CR>
+nmap <C-_> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
 
 " Window split navigation
 nmap <TAB> <C-w>

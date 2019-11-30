@@ -92,7 +92,7 @@ set_prompt() {
     USERSTRING="${MY_GREEN}\u"
     #x=$'\u25b8' # filled bullet
     #y=$'\u25b9' # open bullet
-    x='->'
+    x='~>'
     y='..'
     PS1_MARK="${MY_CYAN}${x}"
     PS2_MARK="${MY_CYAN}${y}"
