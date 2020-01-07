@@ -1,0 +1,3 @@
+# Terraform functions and aliases
+
+alias tf="terraform"

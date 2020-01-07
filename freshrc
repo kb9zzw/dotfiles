@@ -40,6 +40,7 @@ fresh-options --file=~/.bash_profile --marker --ignore-missing
   fresh bash_profile/conda
   fresh bash_profile/kubernetes
   fresh bash_profile/openssl
+  fresh bash_profile/terraform
 
   # OS-specific stuff
   if [[ "$(uname)" == "Darwin" ]]; then
