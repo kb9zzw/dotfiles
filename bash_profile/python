@@ -1,3 +1,9 @@
+# Prefer python3
+alias python=python3
+
+# Activate my standard venv
+alias activate="test -e ~/venv/bin/activate && source ~/venv/bin/activate"
+
 # Cleanup Python cache and bytecode
 pyclean() {
   find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
@@ -14,3 +20,5 @@ pyweb() {
   fi
   python -m SimpleHTTPServer ${port} 
 }
+
+

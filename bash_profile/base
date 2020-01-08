@@ -179,7 +179,7 @@ export HISTFILESIZE=10000
 export HISTSIZE=10000
 
 # Path Munging
-for path in ~/bin ~/.local/bin; do
+for path in ~/.local/bin ~/bin; do
   if [ -e "$path" ]; then
     PATH=${path}:${PATH}
   fi

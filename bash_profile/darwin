@@ -8,6 +8,5 @@ then
   then
     . $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ] 
   fi
-  export PATH="/usr/local/bin":$PATH
 fi
 

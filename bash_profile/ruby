@@ -1,0 +1,4 @@
+# If rbenv exits, initialize it
+if command -v rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
