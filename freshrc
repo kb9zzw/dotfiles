@@ -42,6 +42,8 @@ fresh-options --file=~/.bash_profile --marker --ignore-missing
   fresh bash_profile/openssl
   fresh bash_profile/terraform
   fresh bash_profile/ruby
+  fresh bash_profile/node
+  fresh bash_profile/fzf
 
   # OS-specific stuff
   if [[ "$(uname)" == "Darwin" ]]; then
