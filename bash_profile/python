@@ -1,3 +1,6 @@
+# Activate pyenv if it exists
+command -v pyenv &> /dev/null && eval "$(pyenv init -)"  
+
 # Prefer python3
 alias python=python3
 
