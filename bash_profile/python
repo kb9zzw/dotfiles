@@ -1,5 +1,9 @@
-# Activate pyenv if it exists
-command -v pyenv &> /dev/null && eval "$(pyenv init -)"  
+# Munge path if local pyenv exits
+[ -e ~/.pyenv ] && PATH=~/.pyenv/bin:${PATH} && export PATH
+
+# If pyenv exits, initialize it
+command -v pyenv &> /dev/null && eval "$(pyenv init -)"
+[ -e ~/.pyenv/plugins/python-virualenv ] && eval "$(pyenv virutalenv-init -)"  
 
 # Prefer python3
 alias python=python3

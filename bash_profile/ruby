@@ -2,6 +2,4 @@
 [ -e ~/.rbenv ] && PATH=~/.rbenv/bin:${PATH} && export PATH
 
 # If rbenv exits, initialize it
-if command -v rbenv &> /dev/null; then
-  eval "$(rbenv init -)"
-fi
+command -v rbenv &> /dev/null && eval "$(rbenv init -)"
