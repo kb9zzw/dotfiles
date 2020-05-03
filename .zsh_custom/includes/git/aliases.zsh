@@ -1,3 +1,6 @@
+# turn off autocorrect for git
+alias git="nocorrect git"
+
 alias g="git"
 alias gss="git status"
 alias gpsom="git push origin master"

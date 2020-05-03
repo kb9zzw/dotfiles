@@ -17,7 +17,6 @@ autoload -U $ZSH_CUSTOM/functions/*(:t)
 # Disable Anaconda init
 INIT_CONDA=false
 
-
 # Plugins
 plugins=(
   git
@@ -40,5 +39,5 @@ while read -r file; do
 done < <(find ${ZSH_INCLUDES} -type f)
 
 # Include local config, if available
-[ -f "$HOME/.zsh_local" ] && source $HOME/.zsh_local
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 true

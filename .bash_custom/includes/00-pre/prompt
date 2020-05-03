@@ -71,32 +71,36 @@ set_prompt() {
   # Git prompt
   if declare -f __git_ps1 > /dev/null 2>&1
   then
-    MYGITPROMPT="${MY_PURPLE}\$(__git_ps1)"
+    MYGITPROMPT="${MY_LTPURPLE}\$(__git_ps1) "
   else
     MYGITPROMPT=''
   fi
 
   # Python virtual env
   if [ -n "${VIRTUAL_ENV}" ]; then
-    MY_VENV=" ${MY_YELLOW}<$(basename $VIRTUAL_ENV)>"
-  elif [ -n "${CONDA_DEFAULT_ENV}" ] && [ "${CONDA_DEFAULT_ENV}" != 'base' ]; then
-    MY_VENV=" ${MY_YELLOW}<${CONDA_DEFAULT_ENV}>"
+    MY_VENV="${MY_YELLOW}[$(basename $VIRTUAL_ENV)] "
   else
     MY_VENV=''
   fi
 
+  if [ -n "${CONDA_DEFAULT_ENV}" ]; then
+    MY_CONDA_ENV="${MY_YELLOW}c[${CONDA_DEFAULT_ENV}] "
+  else
+    MY_CONDA_ENV=""
+  fi
+
   # Current working directory
-  MY_CWD=" ${MY_BROWN}\w"
+  MY_CWD="${MY_LTBLUE}\w"
 
   # exit status 
   if [[ "$exit" -ne 0 ]]; then
-    MY_EXIT_STATUS=" ${MY_RED}$exit"
+    MY_EXIT_STATUS="${MY_RED}$exit "
   else 
     MY_EXIT_STATUS=''
   fi
 
   # Prompt
-  PS1="${USERSTRING}@${HOSTNAME}${MY_EXIT_STATUS}${MY_VENV}${MY_CWD}${MYGITPROMPT}\n${PS1_MARK}${MY_COLORRESET} "
+  PS1="${USERSTRING}@${HOSTNAME} ${MY_EXIT_STATUS}${MY_VENV}${MY_CONDA_ENV}${MY_CWD}${MYGITPROMPT}\n${PS1_MARK}${MY_COLORRESET} "
   PS2="${PS2_MARK}${MY_COLORRESET} "
 
   # Window title

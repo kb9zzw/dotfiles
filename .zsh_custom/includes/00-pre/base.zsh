@@ -1,6 +1,6 @@
 # Correct command spelling errors
 setopt correct
-setopt correctall
+unsetopt correctall
 
 # Default editor, prefer nvim
 command -v nvim &> /dev/null && EDITOR="nvim" || EDITOR="vim"
