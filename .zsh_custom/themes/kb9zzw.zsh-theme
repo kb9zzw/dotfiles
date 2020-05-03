@@ -2,10 +2,12 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 if [[ $UID -eq 0 ]]; then
     local user_host='%{$terminfo[bold]$fg[red]%}%n@%m %{$reset_color%}'
-    local user_symbol='#'
+    local primary_symbol='#'
+    local secondary_symbol="."
 else
     local user_host='%{$fg[green]%}%n@%m %{$reset_color%}'
-    local user_symbol='%{$fg[blue]%}▸%{$reset_color%}'
+    local primary_symbol='%{$fg[blue]%}▸%{$reset_color%}'
+    local secondary_symbol="%{${fg[blue]%}▹%{$reset_color%}"
 fi
 
 local current_dir='%{$terminfo[bold]$fg[blue]%}%(4~|%-1~/.../%2~|%3~) %{$reset_color%}'
@@ -14,10 +16,10 @@ local venv_prompt='$(virtualenv_prompt_info)'
 local conda_prompt='$(conda_prompt_info)'
 
 PROMPT="${user_host}${venv_prompt}${conda_prompt}${current_dir}${git_branch}
-%B${user_symbol}%b "
+%B${primary_symbol}%b "
 RPROMPT="%B${return_code}%b"
 
-PROMPT2="%B${fg[blue]%}▹%{$reset_color%}%b "
+PROMPT2="%B${secondary_symbol}%b "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
