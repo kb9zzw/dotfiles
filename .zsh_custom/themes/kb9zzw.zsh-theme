@@ -22,7 +22,7 @@ PROMPT2="%B${fg[blue]%}▹%{$reset_color%}%b "
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
-ZSH_THEME_CONDA_ENV_PREFIX="%{$terminfo[bold]$fg[yellow]%}Ⓒ ["
+ZSH_THEME_CONDA_ENV_PREFIX="%{$terminfo[bold]$fg[yellow]%}ᶜ["
 ZSH_THEME_CONDA_ENV_SUFFIX="] %{$reset_color%}"
 
 ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="%{$terminfo[bold]$fg[yellow]%}["
