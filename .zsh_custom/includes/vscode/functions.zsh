@@ -1,6 +1,8 @@
+#!/bin/zsh
+
 VSCODE_EXTENSIONS=~/.vscode/extensions.txt
 
-vscode_extensions() {
+function vscode_extensions() {
 
   if [ -n "${VSCODE_DISABLED}" ]; then
     echo "vscode extension management disabled"

@@ -28,11 +28,19 @@ sync() {
 
 # initialize fzf
 init_fzf() {
-  FZF="${FZF_SRC:-'https://github.com/junegunn/fzf.git'}"
+  FZF="${FZF_SRC:-https://github.com/junegunn/fzf.git}"
 
-  if [ ! -d ~/.fzf ]; then
+  if [ ! -d "${HOME}/.fzf" ]; then
     git clone --depth 1 "${FZF}" ~/.fzf
     ~/.fzf/install --all --no-update-rc
+  fi
+}
+
+init_oh_my_zsh() {
+  if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+    export KEEP_ZSHRC="yes"
+    export RUNZSH="no"
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   fi
 }
 
@@ -62,8 +70,11 @@ else
 	fi;
 fi;
 
+source ~/.bash_profile
+
 # Post-processing
 init_fzf
+init_oh_my_zsh
 init_vim
 init_vscode
 
