@@ -1,5 +1,0 @@
-# Munge path if local rbenv exits
-[ -e ~/.rbenv ] && PATH=~/.rbenv/bin:${PATH} && export PATH
-
-# If rbenv exits, initialize it
-command -v rbenv &> /dev/null && eval "$(rbenv init -)"

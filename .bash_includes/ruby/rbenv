@@ -1,0 +1,5 @@
+# rbenv
+command -v rbenv &> /dev/null && eval "$(rbenv init -)"
+
+# add rbenv to path
+export PATH=~/.rbenv/bin:${PATH}
