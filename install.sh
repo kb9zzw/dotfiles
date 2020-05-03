@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 DOTFILES=$(dirname "$0")
 
@@ -19,16 +19,16 @@ sync() {
 		--exclude "README.md" \
 		--exclude "LICENSE" \
     --exclude "darwin" \
-		-avh --no-perms "${DOTFILES}/" ~
+		-avh --no-perms "${DOTFILES}/" "$HOME"
 
   # Mac
   uname | grep Darwin &> /dev/null && 
-    rsync -avh --no-perms "${DOTFILES}/darwin/" ~
+    rsync -avh --no-perms "${DOTFILES}/darwin/" "$HOME"
 }
 
 # initialize fzf
 init_fzf() {
-  FZF="${FZF_SRC:-https://github.com/junegunn/fzf.git}"
+  FZF="${FZF_SRC:-'https://github.com/junegunn/fzf.git'}"
 
   if [ ! -d ~/.fzf ]; then
     git clone --depth 1 "${FZF}" ~/.fzf
@@ -61,8 +61,6 @@ else
 		sync;
 	fi;
 fi;
-
-source ~/.bash_profile
 
 # Post-processing
 init_fzf
