@@ -9,7 +9,7 @@ else
 fi
 
 local current_dir='%{$terminfo[bold]$fg[blue]%}%(4~|%-1~/.../%2~|%3~) %{$reset_color%}'
-local git_branch='$(git_prompt_info)'
+local git_branch='%{$terminfo[bold]$fg[magenta]%}$(git_prompt_info)%{$reset_color%}'
 local venv_prompt='$(virtualenv_prompt_info)'
 local conda_prompt='$(conda_prompt_info)'
 
@@ -19,8 +19,8 @@ RPROMPT="%B${return_code}%b"
 
 PROMPT2="%B${fg[blue]%}▹%{$reset_color%}%b "
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX=") %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
 ZSH_THEME_CONDA_ENV_PREFIX="%{$terminfo[bold]$fg[yellow]%}Ⓒ ["
 ZSH_THEME_CONDA_ENV_SUFFIX="] %{$reset_color%}"
