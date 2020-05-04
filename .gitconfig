@@ -1,3 +1,6 @@
+[user]
+  name = kb9zzw
+  email = kb9zzw@gmail.com
 [core]
   editor = vim
   exlcudesfile = ~/.gitignore
@@ -82,7 +85,3 @@
   master = !git checkout master && git pull origin master
 [include]
   path = ~/.gitconfig.local
-
-[user]
-  name = kb9zzw
-  email = kb9zzw@gmail.com
