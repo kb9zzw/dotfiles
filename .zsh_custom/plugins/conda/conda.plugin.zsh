@@ -1,8 +1,5 @@
-# Where is CONDA installed?
-_CONDA_ROOT=${CONDA_HOME:=$HOME/anaconda3}
-
 # Option to disable anaconda
-_INIT_CONDA=${INIT_CONDA:=true}
+_INIT_CONDA=${INIT_CONDA:-true}
 
 function conda_prompt_info(){
   [[ -n ${CONDA_DEFAULT_ENV} ]] || return
@@ -10,6 +7,7 @@ function conda_prompt_info(){
 }
 
 function init_conda() {
+  _CONDA_ROOT=${CONDA_HOME:=$HOME/anaconda3}
   __conda_setup="$(${_CONDA_ROOT}/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
   if [ $? -eq 0 ]; then
       eval "$__conda_setup"
