@@ -30,3 +30,6 @@ fi
 alias ll="ls -l"
 alias la="ls -la"
 alias lut="ls -lut"
+
+# df ignore snaps
+alias df="df -x'squashfs'"
