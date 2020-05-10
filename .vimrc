@@ -143,9 +143,18 @@ let g:ale_linters = { 'python': ['pylint'],
 " SC1090 = non-constant source
 let g:ale_sh_shellcheck_exclusions = 'SC1090'
 
-" ale lint highlight colors
+" highlight tweaks
+
+" ale linting
 hi SpellCap cterm=underline ctermfg=NONE ctermbg=NONE guifg=NONE 
 hi SpellBad cterm=bold ctermfg=Black ctermbg=Red
 
 " popup menu colors
 hi Pmenu ctermbg=gray guibg=gray
+
+" surround matching
+hi MatchParen cterm=bold ctermfg=11 gui=bold guifg=gold ctermbg=NONE guibg=NONE
+
+" search
+hi Search ctermfg=0 ctermbg=11 guifg=black guibg=ffff00
+hi IncSearch ctermfg=0 ctermbg=7 guifg=black guibg=c0c0c0

@@ -67,7 +67,9 @@ else
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		sync;
-	fi;
+  else
+    exit 0
+  fi;
 fi;
 
 source ~/.bash_profile
