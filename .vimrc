@@ -28,12 +28,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'dense-analysis/ale'
 Plugin 'hashivim/vim-terraform'
+Plugin 'editorconfig/EditorConfig'
+Plugin 'cohama/lexima.vim'
 
 call vundle#end()
 
@@ -45,6 +46,9 @@ if run_bundle_install == 1
   silent !echo "Vim is now ready."
   :cq
 endif
+
+" set leader to space
+let mapleader = "\<Space>"
 
 " utf-8
 set encoding=utf-8
@@ -91,17 +95,20 @@ nmap <C-_> :set invnumber<CR>:GitGutterToggle<CR>:SyntasticToggleMode<CR>
 nmap <TAB> <C-w>
 nmap <TAB><TAB> <C-w>w
 
-" no 80char check on puppet
+" syntastic no 80char check on puppet
 let g:syntastic_puppet_puppetlint_args='--no-80chars-check'
 
-" ignore shellcheck non-constant source (SC1090)
+" syntastic ignore shellcheck non-constant source (SC1090)
 let g:synstastic_sh_shellcheck_args='-e SC1090'
 
-" disable code folding on markdown
+" vim_markdown disable code folding on markdown
 let g:vim_markdown_folding_disabled = 1
 
-" left-justify comments
+" nerdcommenter left-justify comments
 let g:NERDDefaultAlign = 'left'
+
+" nerdcommenter extra space after comments
+let g:NERDSpaceDelims = 1
 
 " nerdtree file browser
 map <C-o> :NERDTreeToggle<CR>
@@ -110,6 +117,7 @@ map <C-o> :NERDTreeToggle<CR>
 set laststatus=2
 set noshowmode
 
+" lightline config
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
@@ -126,16 +134,16 @@ au BufRead,BufNewFile *.cfn.yml set filetype=yaml.cloudformation
 au BufRead,BufNewFile *.cfn.yaml set filetype=yaml.cloudformation
 au BufRead,BufNewFile *.cfn set filetype=yaml.cloudformation
 
-" linting
+" ale linters
 let g:ale_linters = { 'python': ['pylint'],
       \ 'yaml.cloudformation': ['yamllint', 'cloudformation'],
       \ 'yaml': ['yamllint'] }
 
-" shellcheck excludes
+" ale shellcheck excludes
 " SC1090 = non-constant source
 let g:ale_sh_shellcheck_exclusions = 'SC1090'
 
-" lint highlight colors
+" ale lint highlight colors
 hi SpellCap cterm=underline ctermfg=NONE ctermbg=NONE guifg=NONE 
 hi SpellBad cterm=bold ctermfg=Black ctermbg=Red
 
