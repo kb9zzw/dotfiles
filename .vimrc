@@ -146,15 +146,15 @@ let g:ale_sh_shellcheck_exclusions = 'SC1090'
 " highlight tweaks
 
 " ale linting
-hi SpellCap cterm=underline ctermfg=NONE ctermbg=NONE guifg=NONE 
-hi SpellBad cterm=bold ctermfg=Black ctermbg=Red
+hi SpellCap cterm=underline ctermfg=NONE ctermbg=NONE gui=underline guifg=NONE guibg=NONE
+hi SpellBad cterm=bold ctermfg=black ctermbg=red gui=bold guifg=black guibg=red
 
 " popup menu colors
-hi Pmenu ctermbg=gray guibg=gray
+hi Pmenu cterm=NONE ctermfg=0 ctermbg=gray gui=NONE guifg=black guibg=gray
 
 " surround matching
-hi MatchParen cterm=bold ctermfg=11 gui=bold guifg=gold ctermbg=NONE guibg=NONE
+hi MatchParen cterm=bold ctermfg=11 ctermbg=NONE gui=bold guifg=gold guibg=NONE
 
 " search
-hi Search ctermfg=0 ctermbg=11 guifg=black guibg=ffff00
-hi IncSearch ctermfg=0 ctermbg=7 guifg=black guibg=c0c0c0
+hi Search cterm=NONE ctermfg=0 ctermbg=11 gui=NONE guifg=black guibg=#ffff00
+hi IncSearch cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=black guibg=#c0c0c0
