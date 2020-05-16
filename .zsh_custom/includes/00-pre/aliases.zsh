@@ -15,15 +15,13 @@ alias cp="cp -i"
 # Power Clear!
 alias clear="printf '\33c\e[3J'"
 
-# misc
+# grep
 alias grep='grep --color=auto'
-alias ..='cd ..'
-alias cd..='cd ..'
 
 # colorized ls
 if ls --color=auto &> /dev/null
 then
-    alias ls="ls --color=auto"
+  alias ls="ls --color=auto"
 fi
 
 # ls
@@ -33,3 +31,8 @@ alias lut="ls -lut"
 
 # df ignore snaps
 alias df="df -x'squashfs'"
+
+# cd
+alias c="cd"
+alias ..='cd ..'
+alias cd..='cd ..'
