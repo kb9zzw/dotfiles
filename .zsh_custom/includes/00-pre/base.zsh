@@ -19,7 +19,10 @@ which colordiff &>/dev/null && alias diff=colordiff
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+# CDPATH
+export CDPATH=.
+
 # Add workspace to cdpath
 if [ -e "${HOME}/workspace" ]; then
-  export CDPATH="${HOME}/workspace:${CDPATH}"
+  export CDPATH="${CDPATH}:${HOME}/workspace"
 fi
