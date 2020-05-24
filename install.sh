@@ -40,6 +40,14 @@ install() {
 !README.md
 !install.sh
 EOF
+
+  # exclude macosx only config
+    if [[ $OSTYPE != darwin* ]]; then
+      cat >> $HOME/.dotfiles/info/sparse-checkout << EOF
+!Library
+!.iterm2
+EOF
+    fi
   fi
   dotfiles fetch origin $DOTFILES_LOCAL_BRANCH
   backup

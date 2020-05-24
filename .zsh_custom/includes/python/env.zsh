@@ -13,7 +13,7 @@ if [ -e "$HOME/.pyenv/plugins/python-virtualenv" ]; then
 fi
 
 # Mac-specific stuff
-if echo "$OSTYPE" | grep 'darwin'; then
+if [[ $OSTYPE == darwin* ]]; then
   # Sets up pyenv to use homebrew tcl-tk libs
   if [ -d "/usr/local/opt/tcl-tk" ]; then
     export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
