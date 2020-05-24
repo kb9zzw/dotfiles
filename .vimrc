@@ -34,7 +34,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'dense-analysis/ale'
 Plugin 'hashivim/vim-terraform'
 Plugin 'editorconfig/EditorConfig'
-Plugin 'cohama/lexima.vim'
 
 call vundle#end()
 
