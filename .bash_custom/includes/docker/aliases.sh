@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias d="docker"
 alias dps="docker ps"
 alias din="docker inspect"

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Initialize notes
 function init_notes {
   if [-n "$1"]; then

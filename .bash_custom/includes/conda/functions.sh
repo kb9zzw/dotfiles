@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Option to disable anaconda
 _INIT_CONDA=${INIT_CONDA:-true}
 

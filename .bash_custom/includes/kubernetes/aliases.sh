@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias k="kubectl"
 alias ka='kubeadm'
 alias kgn='kubectl get nodes'

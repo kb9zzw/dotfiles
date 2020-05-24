@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Stop all containers
 dstopall() { docker stop $* $(docker ps -q -a); }
 

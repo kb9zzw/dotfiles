@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Generate a local certificate authority
 ssl-new-ca() {
   if [ -n "$1" ]; then

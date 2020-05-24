@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # history
 shopt -s histappend
 shopt -s cmdhist

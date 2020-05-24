@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Default editor, prefer nvim
 if command -v nvim &> /dev/null
 then

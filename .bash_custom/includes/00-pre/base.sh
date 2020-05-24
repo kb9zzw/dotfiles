@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Fix spelling errors in cd
 shopt -s cdspell
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Upgrade fzf
 function upgrade_fzf() {
   cd ~/.fzf && git pull && ./install --all --no-update-rc

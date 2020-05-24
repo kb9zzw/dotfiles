@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # color settings
 export CLICOLOR=''
 MY_COLORRESET="\[\033[0m\]"
