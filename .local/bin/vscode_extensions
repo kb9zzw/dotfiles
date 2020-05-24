@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VSCODE_EXT_FILE=${VSCODE_EXTENSIONS:-$HOME/.vscode/extensions.txt}
+
 if [ -n "${VSCODE_DISABLED}" ]
 then
   echo "vscode extension management disabled"
@@ -9,4 +11,4 @@ fi
 while read -r ext
 do
   code --install-extension "$ext"
-done < <(cat ${VSCODE_EXTENSIONS})
+done < <(cat ${VSCODE_EXT_FILE})
