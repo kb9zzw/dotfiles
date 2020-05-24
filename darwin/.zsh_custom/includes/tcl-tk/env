@@ -1,6 +1,0 @@
-# Sets up pyenv to use homebrew tcl-tk libs
-if [ -d "/usr/local/opt/tcl-tk" ]; then
-  export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
-  export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
-  export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
-fi

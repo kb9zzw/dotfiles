@@ -1,6 +1,0 @@
-# pyenv
-command -v pyenv &> /dev/null && eval "$(pyenv init -)"
-[ -e ~/.pyenv/plugins/python-virualenv ] && eval "$(pyenv virutalenv-init -)"  
-
-# append .pyenv to path
-export PATH=~/.pyenv/bin:${PATH}

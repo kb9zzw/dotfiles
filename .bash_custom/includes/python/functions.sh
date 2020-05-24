@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Cleanup Python cache and bytecode
 pyclean() {
   find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete

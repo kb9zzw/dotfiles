@@ -2,6 +2,7 @@
 
 DOTFILES=$(dirname "$0")
 DOTFILES_LOCAL_SRC=${DOTFILES_SRC:-https://gitlab.com/kb9zzw/dotfiles.git}
+DOTFILES_LOCAL_BRANCH=${DOTFILES_BRANCH:-master}
 
 banner() {
 cat <<"EOF"
@@ -20,16 +21,29 @@ dotfiles() {
 
 backup() {
   echo "Backing up existing files to ~/.dotfiles-backup"
-  for file in $(dotfiles checkout 2>&1 | egrep "\s+\." | awk '{print $1}'); do
-    mkdir -p $HOME/.dotfiles-backup/$(dirname file)
+  for file in $(dotfiles checkout $DOTFILES_LOCAL_BRANCH 2>&1 | egrep "^\s+" | awk '{print $1}'); do
+    mkdir -p $HOME/.dotfiles-backup/$(dirname $file)
     mv -f $HOME/$file $HOME/.dotfiles-backup/$file
   done
 }
 
-sync() {
-  git clone --bare $DOTFILES_LOCAL_SRC $HOME/.dotfiles
+install() {
+  if [ ! -d $HOME/.dotfiles ]; then
+    mkdir -p $HOME/.dotfiles
+    git init --bare $HOME/.dotfiles
+    dotfiles remote add origin $DOTFILES_LOCAL_SRC
+    dotfiles config --local core.sparseCheckout true
+    dotfiles config --local status.showUntrackedFiles no
+    cat > $HOME/.dotfiles/info/sparse-checkout <<EOF
+/*
+!LICENSE
+!README.md
+!install.sh
+EOF
+  fi
+  dotfiles fetch origin $DOTFILES_LOCAL_BRANCH
   backup
-  dotfiles checkout
+  dotfiles checkout $DOTFILES_LOCAL_BRANCH
 }
 
 # initialize fzf
@@ -66,17 +80,7 @@ init_vscode() {
   fi
 }
 
-if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
-	sync;
-else
-	read -r -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		sync;
-  else
-    exit 0
-  fi;
-fi;
+install
 
 source ~/.bash_profile
 
