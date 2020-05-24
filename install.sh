@@ -2,7 +2,6 @@
 
 DOTFILES=$(dirname "$0")
 DOTFILES_LOCAL_SRC=${DOTFILES_SRC:-https://gitlab.com/kb9zzw/dotfiles.git}
-DOTFILES_LOCAL_REMOTE="${DOTFILES_REMOTE:-origin}"
 DOTFILES_LOCAL_BRANCH=${DOTFILES_BRANCH:-master}
 
 banner() {
@@ -22,7 +21,7 @@ dotfiles() {
 
 backup() {
   echo "Backing up existing files to ~/.dotfiles-backup"
-  for file in $(dotfiles pull $DOTFILES_LOCAL_REMOTE $DOTFILES_LOCAL_BRANCH 2>&1 | egrep "^\s+" | awk '{print $1}'); do
+  for file in $(dotfiles checkout $DOTFILES_LOCAL_BRANCH 2>&1 | egrep "^\s+" | awk '{print $1}'); do
     mkdir -p $HOME/.dotfiles-backup/$(dirname $file)
     mv -f $HOME/$file $HOME/.dotfiles-backup/$file
   done
@@ -32,7 +31,7 @@ install() {
   if [ ! -d $HOME/.dotfiles ]; then
     mkdir -p $HOME/.dotfiles
     git init --bare $HOME/.dotfiles
-    dotfiles remote add $DOTFILES_LOCAL_REMOTE $DOTFILES_LOCAL_SRC
+    dotfiles remote add origin $DOTFILES_LOCAL_SRC
     dotfiles config --local core.sparseCheckout true
     dotfiles config --local status.showUntrackedFiles no
     cat > $HOME/.dotfiles/info/sparse-checkout <<EOF
@@ -50,8 +49,9 @@ EOF
 EOF
     fi
   fi
+  dotfiles fetch origin $DOTFILES_LOCAL_BRANCH
   backup
-  dotfiles pull $DOTFILES_LOCAL_REMOTE $DOTFILES_LOCAL_BRANCH
+  dotfiles checkout $DOTFILES_LOCAL_BRANCH
 }
 
 # initialize fzf
