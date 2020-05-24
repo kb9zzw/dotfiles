@@ -84,13 +84,11 @@ init_vim() {
 init_vscode() {
   if command -v code &> /dev/null && \
     ! [ -d "${HOME}/.vscode/extensions" ]; then
-    vscode_extensions 
+    $HOME/.local/bin/vscode_extensions 
   fi
 }
 
 install
-
-source ~/.bash_profile
 
 # Post-processing
 init_fzf
