@@ -3,7 +3,7 @@ kb9zzw/dotfiles
 
 This is my `dotfiles`.  There are many like it, but this one is mine.
 
-My dotfiles are installed in a simple way using rsync.
+My dotfiles are installed and managed with Git.
 
 **WARNING** This is my personal collection of dotfiles.  You're welcome 
 to use it, but I don't recommend using it as-is or without understanding
@@ -12,7 +12,15 @@ what it does. This will clobber files in your home directory.
 ## Installation
 
 ```
-git clone https://gitlab.com/kb9zzw/dotfiles.git && cd dotfiles && ./install.sh
+curl -sL http://dotfiles.lunabotic.com | bash
+```
+
+Or, if you prefer to look before leaping...
+
+```
+git clone https://gitlab.com/kb9zzw/dotfiles.git
+cd dotfiles
+./install.sh
 ```
 
 ## Organization
