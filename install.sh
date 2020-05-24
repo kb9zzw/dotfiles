@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOTFILES=$(dirname "$0")
+DOTFILES_LOCAL_SRC=${DOTFILES_SRC:-https://gitlab.com/kb9zzw/dotfiles.git}
 
 banner() {
 cat <<"EOF"
@@ -13,17 +14,22 @@ cat <<"EOF"
 EOF
 }
 
-sync() {
-	rsync --exclude ".git/" \
-		--exclude "install.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE" \
-    --exclude "darwin" \
-		-avh --no-perms "${DOTFILES}/" "$HOME"
+dotfiles() {
+  /usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@
+}
 
-  # Mac
-  uname | grep Darwin &> /dev/null && 
-    rsync -avh --no-perms "${DOTFILES}/darwin/" "$HOME"
+backup() {
+  echo "Backing up existing files to ~/.dotfiles-backup"
+  for file in $(dotfiles checkout 2>&1 | egrep "\s+\." | awk '{print $1}'); do
+    mkdir -p $HOME/.dotfiles-backup/$(dirname file)
+    mv -f $HOME/$file $HOME/.dotfiles-backup/$file
+  done
+}
+
+sync() {
+  git clone --bare $DOTFILES_LOCAL_SRC $HOME/.dotfiles
+  backup
+  dotfiles checkout
 }
 
 # initialize fzf
