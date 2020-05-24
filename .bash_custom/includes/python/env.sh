@@ -4,7 +4,7 @@
 if [ -e "$HOME/.pyenv" ]; then
   export PYENV_HOME="$HOME/.pyenv"
   export PATH="$PYENV_HOME/bin:$PATH"
-  eval "$($HOME/.pyenv/bin/pyenv init -i)"
+  eval "$($HOME/.pyenv/bin/pyenv init -)"
 fi
 
 # Check for pyenv-virtualenv

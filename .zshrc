@@ -23,9 +23,6 @@ plugins=(
   virtualenv
   conda
   fzf
-  pyenv
-  rbenv
-  nvm
 )
 
 # Load oh-my-zsh

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Check for rbenv
 if [ -e "$HOME/.rbenv" ]; then
