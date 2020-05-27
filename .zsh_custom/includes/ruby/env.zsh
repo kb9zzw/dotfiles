@@ -1,8 +1,15 @@
 #!/bin/zsh
 
-# Check for rbenv
-if [ -e "$HOME/.rbenv" ]; then
-  export RBENV_HOME="$HOME/.rbenv"
-  export PATH="$RBENV_HOME/bin:$PATH"
-  eval "$($HOME/.rbenv/bin/rbenv init -)"
+if [[ $OSTYPE == darwin* ]]; then
+  # Mac-specific stuff
+  RBENV=/usr/local/bin/rbenv
+else
+  # Linux
+  RBENV=$HOME/.rbenv/bin/rbenv
+  export PATH=$HOME/.rbenv/bin:$PATH
+fi
+
+# Initialize rbenv
+if [ -e "$RBENV" ]; then
+  eval "$($RBENV init -)"
 fi
