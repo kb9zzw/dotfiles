@@ -29,6 +29,9 @@ alias ll="ls -l"
 alias la="ls -la"
 alias lut="ls -lut"
 
+# color diff
+which colordiff &>/dev/null && alias diff=colordiff
+
 # df ignore snaps
 alias df="df -x'squashfs'"
 
