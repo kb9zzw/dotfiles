@@ -22,9 +22,6 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
   fi
 fi
 
-# color diff
-which colordiff &>/dev/null && alias diff=colordiff
-
 # Colorized less
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -40,4 +37,9 @@ export CDPATH=.
 # Add workspace to cdpath
 if [ -e "${HOME}/workspace" ]; then
   export CDPATH="${CDPATH}:${HOME}/workspace"
+fi
+
+# prefer GNU sed on Mac
+if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin" ]; then
+  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
 fi
