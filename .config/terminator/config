@@ -4,6 +4,8 @@
 [keybindings]
 [profiles]
   [[default]]
+    background_darkness = 0.9
+    background_type = transparent
     cursor_color = "#aaaaaa"
     scrollbar_position = hidden
     scrollback_lines = 10000
@@ -20,9 +22,7 @@
     foreground_color = "#000000"
     scrollback_lines = 10000
     use_system_font = False
-  [[Transparent]]
-    background_darkness = 0.9
-    background_type = transparent
+  [[NonTransparent]]
     cursor_color = "#aaaaaa"
     scrollbar_position = hidden
     scrollback_lines = 10000
