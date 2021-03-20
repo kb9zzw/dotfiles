@@ -21,13 +21,11 @@
     scrollback_lines = 10000
     use_system_font = False
   [[Transparent]]
-    background_darkness = 0.8
+    background_darkness = 0.9
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Monospace Regular 12
     scrollbar_position = hidden
     scrollback_lines = 10000
-    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
